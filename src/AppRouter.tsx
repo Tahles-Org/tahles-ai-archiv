@@ -1,14 +1,16 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import SupplierRegistrationPage from "@/pages/SupplierRegistrationPage"
-import HomePage from "@/pages/HomePage"
+// src/AppRouter.tsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
 
 export default function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register/supplier" element={<SupplierRegistrationPage />} />
+        <Route path="/" element={<Index />} />
+        {/* future routes can go here */}
+        <Route path="*" element={<div>404 - דף לא נמצא</div>} />
       </Routes>
     </Router>
-  )
+  );
 }
