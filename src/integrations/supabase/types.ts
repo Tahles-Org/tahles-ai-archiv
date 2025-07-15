@@ -334,6 +334,68 @@ export type Database = {
           },
         ]
       }
+      provider_availability_slots: {
+        Row: {
+          current_bookings: number | null
+          date: string | null
+          end_time: string | null
+          id: string
+          is_available: boolean | null
+          max_concurrent_bookings: number | null
+          service_id: string | null
+          start_time: string | null
+        }
+        Insert: {
+          current_bookings?: number | null
+          date?: string | null
+          end_time?: string | null
+          id?: string
+          is_available?: boolean | null
+          max_concurrent_bookings?: number | null
+          service_id?: string | null
+          start_time?: string | null
+        }
+        Update: {
+          current_bookings?: number | null
+          date?: string | null
+          end_time?: string | null
+          id?: string
+          is_available?: boolean | null
+          max_concurrent_bookings?: number | null
+          service_id?: string | null
+          start_time?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "provider_availability_slots_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      providers: {
+        Row: {
+          calendar_active: boolean | null
+          calendar_connected: boolean | null
+          id: string
+          name: string | null
+        }
+        Insert: {
+          calendar_active?: boolean | null
+          calendar_connected?: boolean | null
+          id?: string
+          name?: string | null
+        }
+        Update: {
+          calendar_active?: boolean | null
+          calendar_connected?: boolean | null
+          id?: string
+          name?: string | null
+        }
+        Relationships: []
+      }
       reviews: {
         Row: {
           created_at: string
@@ -380,6 +442,50 @@ export type Database = {
             columns: ["supplier_id"]
             isOneToOne: false
             referencedRelation: "suppliers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          base_price: number | null
+          has_calendar_integration: boolean | null
+          id: string
+          is_visible: boolean | null
+          name: string | null
+          provider_id: string | null
+          service_areas: string[] | null
+          setup_time_minutes: number | null
+          teardown_time_minutes: number | null
+        }
+        Insert: {
+          base_price?: number | null
+          has_calendar_integration?: boolean | null
+          id?: string
+          is_visible?: boolean | null
+          name?: string | null
+          provider_id?: string | null
+          service_areas?: string[] | null
+          setup_time_minutes?: number | null
+          teardown_time_minutes?: number | null
+        }
+        Update: {
+          base_price?: number | null
+          has_calendar_integration?: boolean | null
+          id?: string
+          is_visible?: boolean | null
+          name?: string | null
+          provider_id?: string | null
+          service_areas?: string[] | null
+          setup_time_minutes?: number | null
+          teardown_time_minutes?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "services_provider_id_fkey"
+            columns: ["provider_id"]
+            isOneToOne: false
+            referencedRelation: "providers"
             referencedColumns: ["id"]
           },
         ]
