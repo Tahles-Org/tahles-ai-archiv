@@ -8,8 +8,7 @@ export default function AppRouter() {
     <Router>
       <Routes>
         <Route path="/" element={<Index />} />
-        {/* future routes can go here */}
-        <Route path="*" element={<div>404 - דף לא נמצא</div>} />
+        <Route path="*" element={<div>404 - הדף לא נמצא</div>} />
       </Routes>
     </Router>
   );
