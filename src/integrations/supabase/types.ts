@@ -851,14 +851,6 @@ export type Database = {
         }
         Returns: boolean
       }
-      dmetaphone: {
-        Args: { "": string }
-        Returns: string
-      }
-      dmetaphone_alt: {
-        Args: { "": string }
-        Returns: string
-      }
       get_current_user_role: {
         Args: Record<PropertyKey, never>
         Returns: string
@@ -870,14 +862,6 @@ export type Database = {
       is_service_active: {
         Args: { service_id: string }
         Returns: boolean
-      }
-      soundex: {
-        Args: { "": string }
-        Returns: string
-      }
-      text_soundex: {
-        Args: { "": string }
-        Returns: string
       }
     }
     Enums: {
