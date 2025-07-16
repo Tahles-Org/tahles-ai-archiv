@@ -2,7 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 serve(async (_req) => {
   const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-
+  
   const res = await fetch("https://api.supabase.com/v1/projects/xnkkcpmdfpsktgrljytg/linter/run", {
     method: "POST",
     headers: {
