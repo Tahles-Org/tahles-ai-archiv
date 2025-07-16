@@ -1,19 +1,27 @@
+// supabase/functions/run_linter_daily/index.ts
+
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 serve(async (_req) => {
-  const SERVICE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-  
-  const res = await fetch("https://api.supabase.com/v1/projects/xnkkcpmdfpsktgrljytg/linter/run", {
+  const res = await fetch("https://api.supabase.com/v1/projects/xnkkcpmdfpsktgrljytg/lint", {
     method: "POST",
     headers: {
-      "Authorization": `Bearer ${SERVICE_KEY}`,
+      "Authorization": `Bearer ${Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")}`,
       "Content-Type": "application/json"
-    }
+    },
+    body: JSON.stringify({
+      filters: {
+        severity: ["WARN", "ERROR"],
+        facing: ["EXTERNAL"]
+      }
+    })
   });
 
-  const result = await res.json();
+  const data = await res.json();
+  console.log("Linter result:", data);
 
-  return new Response(JSON.stringify(result), {
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(JSON.stringify({
+    message: "Linter run complete",
+    details: data
+  }), { status: 200 });
 });
