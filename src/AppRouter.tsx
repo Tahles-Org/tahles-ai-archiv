@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import HomePage from "./pages/HomePage";
 import SupplierRegistrationPage from "./pages/SupplierRegistrationPage";
+import NotFound from "./pages/NotFound";
 
 export default function AppRouter() {
   return (
@@ -12,7 +13,7 @@ export default function AppRouter() {
         <Route path="/" element={<Index />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/supplier-registration" element={<SupplierRegistrationPage />} />
-        <Route path="*" element={<div>404 - הדף לא נמצא</div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
