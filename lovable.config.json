@@ -1,0 +1,16 @@
+{
+  "$schema": "https://app.lovable.so/definitions/schema.json",
+  "name": "Tachles Platform",
+  "entry": "src/main.tsx",
+  "root": "src",
+  "commands": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "provider": "supabase",
+  "database": {
+    "type": "supabase",
+    "projectId": "xnkkcpmdfpsktgrljytg"
+  }
+}
