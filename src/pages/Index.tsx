@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, Play, Users, Briefcase } from "lucide-react";
@@ -21,13 +22,17 @@ const Index = () => {
         </div>
         
         <nav className="hidden md:flex space-x-4">
-          <Button variant="ghost" className="text-foreground">
-            <Users className="w-4 h-4 ml-2" />
-            ספקים
+          <Button variant="ghost" className="text-foreground" asChild>
+            <Link to="/supplier-registration">
+              <Users className="w-4 h-4 ml-2" />
+              ספקים
+            </Link>
           </Button>
-          <Button variant="ghost" className="text-foreground">
-            <Briefcase className="w-4 h-4 ml-2" />
-            שירותים
+          <Button variant="ghost" className="text-foreground" asChild>
+            <Link to="/home">
+              <Briefcase className="w-4 h-4 ml-2" />
+              שירותים
+            </Link>
           </Button>
         </nav>
       </header>
@@ -64,14 +69,18 @@ const Index = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="px-8 py-4 text-lg">
-              <Users className="w-5 h-5 ml-2" />
-              רישום ספקים
+            <Button size="lg" className="px-8 py-4 text-lg" asChild>
+              <Link to="/supplier-registration">
+                <Users className="w-5 h-5 ml-2" />
+                רישום ספקים
+              </Link>
             </Button>
             
-            <Button variant="outline" size="lg" className="px-8 py-4 text-lg bg-background/80 backdrop-blur-sm">
-              <Play className="w-5 h-5 ml-2" />
-              צפה בהדגמה
+            <Button variant="outline" size="lg" className="px-8 py-4 text-lg bg-background/80 backdrop-blur-sm" asChild>
+              <Link to="/home">
+                <Play className="w-5 h-5 ml-2" />
+                צפה בהדגמה
+              </Link>
             </Button>
           </div>
         </div>
