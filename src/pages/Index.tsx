@@ -1,10 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Play, Users, Briefcase } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Search, Activity, Users, Briefcase, Database, CheckCircle, XCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const Index = () => {
+  const [systemStatus, setSystemStatus] = useState<{
+    providers: number;
+    loading: boolean;
+    error: string | null;
+  }>({
+    providers: 0,
+    loading: true,
+    error: null
+  });
+
+  useEffect(() => {
+    const checkSystemStatus = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('providers')
+          .select('*');
+        
+        if (error) throw error;
+        
+        setSystemStatus({
+          providers: data?.length || 0,
+          loading: false,
+          error: null
+        });
+      } catch (err) {
+        setSystemStatus({
+          providers: 0,
+          loading: false,
+          error: err instanceof Error ? err.message : 'שגיאה בטעינת נתונים'
+        });
+      }
+    };
+
+    checkSystemStatus();
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Video */}
@@ -78,10 +116,41 @@ const Index = () => {
             
             <Button variant="outline" size="lg" className="px-8 py-4 text-lg bg-background/80 backdrop-blur-sm" asChild>
               <Link to="/home">
-                <Play className="w-5 h-5 ml-2" />
-                צפה בהדגמה
+                <Database className="w-5 h-5 ml-2" />
+                בדיקת מערכת
               </Link>
             </Button>
+          </div>
+
+          {/* System Status */}
+          <div className="mt-8 p-4 bg-background/60 backdrop-blur-sm rounded-xl border border-border max-w-md mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Database className="w-4 h-4" />
+              <span className="font-medium">מצב המערכת:</span>
+            </div>
+            <div className="flex items-center justify-center gap-2">
+              {systemStatus.loading ? (
+                <>
+                  <Activity className="w-4 h-4 animate-spin" />
+                  <span className="text-sm">בודק חיבור...</span>
+                </>
+              ) : systemStatus.error ? (
+                <>
+                  <XCircle className="w-4 h-4 text-destructive" />
+                  <span className="text-sm text-destructive">שגיאה בחיבור</span>
+                </>
+              ) : (
+                <>
+                  <CheckCircle className="w-4 h-4 text-green-600" />
+                  <span className="text-sm text-green-600">
+                    {systemStatus.providers === 0 ? "מחובר - לא נמצאו ספקים" : `מחובר - ${systemStatus.providers} ספקים`}
+                  </span>
+                  <Badge variant={systemStatus.providers > 0 ? "default" : "secondary"} className="text-xs">
+                    {systemStatus.providers > 0 ? "פעיל" : "ריק"}
+                  </Badge>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </main>
