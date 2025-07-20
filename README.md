@@ -1,73 +1,137 @@
-# Welcome to your Lovable project
 
-## Project info
+# Tachles Platform (תכל'ס)
 
-**URL**: https://lovable.dev/projects/7168cd61-02d7-46d8-a02a-8881624da738
+A comprehensive supplier and service management platform built with React, Vite, Tailwind CSS, and Supabase.
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Supplier Registration**: Complete supplier onboarding system
+- **Service Management**: Comprehensive service catalog
+- **Real-time Updates**: Live data synchronization with Supabase
+- **Responsive Design**: Mobile-first design approach
+- **Multi-language Support**: Hebrew and English interface
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7168cd61-02d7-46d8-a02a-8881624da738) and start prompting.
+- **Frontend**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Backend**: Supabase (Database, Auth, Real-time)
+- **Deployment**: Docker, GitHub Actions
+- **State Management**: TanStack Query
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📦 Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js 18+ 
+- npm or yarn
+- Docker (optional)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Local Development
 
-Follow these steps:
+```bash
+# Clone the repository
+git clone https://github.com/TahlesAi/tahles-ai.git
+cd tahles-ai
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Docker Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Build and run with Docker Compose
+npm run docker:dev
 
-**Use GitHub Codespaces**
+# Or manually
+docker-compose --profile dev up --build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Production Build
 
-## What technologies are used for this project?
+```bash
+# Build for production
+npm run build
 
-This project is built with:
+# Preview production build
+npm run preview
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Build Docker image
+npm run docker:build
+```
 
-## How can I deploy this project?
+## 🗄️ Database
 
-Simply open [Lovable](https://lovable.dev/projects/7168cd61-02d7-46d8-a02a-8881624da738) and click on Share -> Publish.
+This project uses Supabase for:
+- PostgreSQL database
+- Real-time subscriptions
+- Authentication
+- Row Level Security (RLS)
 
-## Can I connect a custom domain to my Lovable project?
+### Database Schema
 
-Yes, you can!
+Key tables:
+- `suppliers` - Supplier information and profiles
+- `products` - Product catalog
+- `categories` & `subcategories` - Product categorization
+- `orders` - Order management
+- `reviews` - Customer feedback system
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🚀 Deployment
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### GitHub Actions
+
+The project includes automated CI/CD pipelines:
+
+- **CI Pipeline**: Linting, type checking, and building
+- **Docker Build**: Automated Docker image creation
+- **Supabase Migrations**: Database schema updates
+
+### Environment Variables
+
+Required environment variables:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+## 📱 Routes
+
+- `/` - Landing page
+- `/home` - Dashboard
+- `/supplier-registration` - Supplier registration form
+
+## 🧪 Testing
+
+```bash
+# Run linter
+npm run lint
+
+# Type checking
+npx tsc --noEmit
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests and linting
+5. Submit a pull request
+
+## 📄 License
+
+This project is proprietary software. All rights reserved.
+
+## 🆘 Support
+
+For support and questions, please contact the development team.
+
+---
+
+**Built with ❤️ by the Tachles AI Team**

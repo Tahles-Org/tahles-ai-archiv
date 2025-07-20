@@ -1,0 +1,39 @@
+
+version: '3.8'
+
+services:
+  tahles-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tahles-ai-app
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - tahles-network
+
+  # Development service
+  tahles-ai-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: tahles-ai-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+    networks:
+      - tahles-network
+    profiles:
+      - dev
+
+networks:
+  tahles-network:
+    driver: bridge

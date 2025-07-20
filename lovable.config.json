@@ -1,6 +1,7 @@
+
 {
   "$schema": "https://app.lovable.so/definitions/schema.json",
-  "name": "Tachles Platform",
+  "name": "tahles-ai",
   "entry": "src/main.tsx",
   "root": "src",
   "commands": {

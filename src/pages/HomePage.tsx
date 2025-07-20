@@ -1,7 +1,9 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Users, ArrowLeft } from "lucide-react";
+import { Users, ArrowLeft, Activity } from "lucide-react";
+import HealthCheck from "@/components/HealthCheck";
 
 const HomePage = () => {
   return (
@@ -24,6 +26,11 @@ const HomePage = () => {
             </Link>
           </Button>
         </div>
+      </div>
+
+      {/* System Health Check */}
+      <div className="flex justify-center mt-12">
+        <HealthCheck />
       </div>
     </div>
   );
