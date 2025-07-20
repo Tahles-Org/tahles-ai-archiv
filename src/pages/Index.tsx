@@ -26,7 +26,12 @@ const Index = () => {
           .from('providers')
           .select('*');
         
-        if (error) throw error;
+        console.log('Supabase response:', { data, error });
+        
+        if (error) {
+          console.error('Supabase error:', error);
+          throw error;
+        }
         
         setSystemStatus({
           providers: data?.length || 0,
