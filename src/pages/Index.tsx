@@ -18,7 +18,9 @@ const Index = () => {
   });
 
   useEffect(() => {
+    console.log('Index component useEffect starting');
     const checkSystemStatus = async () => {
+      console.log('Checking system status...');
       try {
         const { data, error } = await supabase
           .from('providers')
