@@ -1,1 +1,7 @@
 project_id = "xnkkcpmdfpsktgrljytg"
+
+[db]
+port = 54329
+
+[analytics]
+port = 54331
